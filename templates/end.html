@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  >
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../static/css/style.css"> 
+  <title>Perhitungan efisiensi energi untuk rumah pintar</title>
+</head>
+<body>
+  <header class="header">
+    <div class="header__text">
+      <h1>Calculate your home's energy efficiency!!</h1>
+      <p>Take the initiative and solve the problem of excessive energy consumption!</p>
+    </div>
+  </header>
+  <main>
+    {% block content %}
+    <h2 class="main__title main__title--margin">Your home energy efficiency:</h2>
+    <div class="main__rez" id="end">
+        {%if result <= 150%}
+        <img class="rez__img" src="../../static/img/planet_good.svg" alt="">
+        <span>Your result: {{result}} kWh</span>
+        <span>Your home is very efficient in terms of energy consumption!</span>
+        {%elif result >= 151 and result < 300%}
+        <img class="rez__img" src="../../static/img/planet_medium.svg" alt="">
+        <span>Your result: {{result}} kWh</span>
+        <span>our home's energy efficiency is average!</span>
+        <span>Do you want to make the world a more environmentally friendly place? Fill out the form and we will create an environmentally friendly building for you!</span>
+        <!-- Tugas 3. Buat tautan yang akan mengarahkan pengguna ke formulir-->
+        <a href="{{ url_for('form') }}" class="main__link">Fill in the form</a>
+        {%elif result >= 300%}
+        <img class="rez__img" src="../../static/img/planet_bad.svg" alt="">
+        <span>Your result: {{result}} kWh</span>
+        <span>Your home's energy efficiency is below average!</span>
+        <span>Do you want to make the world a more environmentally friendly place? Fill out the form and we will create an environmentally friendly building for you!</span>
+        <!-- Tugas 3. Buat tautan yang akan mengarahkan pengguna ke formulir-->
+        <a href="{{ url_for('form') }}" class="main__link">Fill in the form</a>
+        {%endif%}
+    </div>
+    {% endblock %}
+  </main>
+  <footer>
+
+  </footer>
+</body>
+</html>
